@@ -12,15 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# NOTE (ghost project): original paths were CWD-relative ("./assets/..."), which
+# breaks when the pipeline is run from any directory other than this file's parent.
+# Changed to __file__-relative paths so they resolve correctly regardless of CWD.
+import os as _os
+_HERE = _os.path.dirname(_os.path.abspath(__file__))
+
 # Part mask files
-HEAD_HAND_MASK_FILE = "./assets/head_hand_mask.npz"
-MHR_FACE_MASK_FILE = "./assets/mhr_face_mask.ply"
+HEAD_HAND_MASK_FILE = _os.path.join(_HERE, "assets", "head_hand_mask.npz")
+MHR_FACE_MASK_FILE = _os.path.join(_HERE, "assets", "mhr_face_mask.ply")
 
 # Subsampled mhr vertices
-SUBSAMPLED_VERTEX_INDICES_FILE = "./assets/subsampled_vertex_indices.npy"
+SUBSAMPLED_VERTEX_INDICES_FILE = _os.path.join(_HERE, "assets", "subsampled_vertex_indices.npy")
 
 # Model template mesh mapping files
-SMPL2MHR_MAPPING_FILE = "./assets/smpl2mhr_mapping.npz"
-SMPLX2MHR_MAPPING_FILE = "./assets/smplx2mhr_mapping.npz"
-MHR2SMPL_MAPPING_FILE = "./assets/mhr2smpl_mapping.npz"
-MHR2SMPLX_MAPPING_FILE = "./assets/mhr2smplx_mapping.npz"
+SMPL2MHR_MAPPING_FILE = _os.path.join(_HERE, "assets", "smpl2mhr_mapping.npz")
+SMPLX2MHR_MAPPING_FILE = _os.path.join(_HERE, "assets", "smplx2mhr_mapping.npz")
+MHR2SMPL_MAPPING_FILE = _os.path.join(_HERE, "assets", "mhr2smpl_mapping.npz")
+MHR2SMPLX_MAPPING_FILE = _os.path.join(_HERE, "assets", "mhr2smplx_mapping.npz")

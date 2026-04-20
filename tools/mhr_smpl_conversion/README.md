@@ -48,7 +48,9 @@ You'll need the official SMPL/SMPLX model files:
 1. **SMPL**: Download from [SMPL website](https://smpl.is.tue.mpg.de/)
 2. **SMPLX**: Download from [SMPLX website](https://smpl-x.is.tue.mpg.de/)
 
-**Note**: If you run into issues with the `.pkl` SMPL(X) model file, try the official `.npz` files instead.
+**Note**: Use the full `.pkl` model files from the official websites — they contain all required fields (hand PCA components, landmark anchors, etc.). Stripped `.npz` exports may be missing keys such as `hands_componentsl` / `hands_componentsr`, causing `smplx.create()` to fail.
+
+> **Patch applied (ghost project):** `file_assets.py` originally used CWD-relative paths (`./assets/...`) for all asset files. This breaks when the tool is imported from any working directory other than `mhr_smpl_conversion/`. The paths have been changed to `__file__`-relative so they resolve correctly regardless of CWD.
 
 ## Quick Start
 
